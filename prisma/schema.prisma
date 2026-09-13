@@ -1,0 +1,224 @@
+// =====================================================================
+// E-COMMERCE PRISMA SCHEMA
+// ---------------------------------------------------------------------
+// Centralized product, order, customer, and content data structure.
+// Replace seed data via prisma/seed.ts. Add new fields here as the
+// catalog grows — the UI reads dynamically from these tables.
+// =====================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------
+// CATALOG
+// ---------------------------------------------------------------------
+
+model Category {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  slug        String      @unique
+  description String?
+  image       String?
+  parentId    String?
+  parent      Category?   @relation("CategoryChildren", fields: [parentId], references: [id])
+  children    Category[]  @relation("CategoryChildren")
+  products    Product[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([parentId])
+}
+
+model Brand {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  logo      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products  Product[]
+}
+
+model Product {
+  id              String       @id @default(cuid())
+  name            String
+  slug            String       @unique
+  sku             String       @unique
+  description     String
+  shortDescription String
+  price           Float
+  salePrice       Float?
+  currency        String       @default("USD")
+  thumbnail       String
+  images          String       // JSON array of URLs
+  categoryId      String
+  category        Category     @relation(fields: [categoryId], references: [id])
+  brandId         String?
+  brand           Brand?       @relation(fields: [brandId], references: [id])
+  sizes           String?     // JSON array
+  colors          String?     // JSON array
+  stock           Int          @default(0)
+  tags            String?     // JSON array
+  featured        Boolean      @default(false)
+  bestSeller      Boolean      @default(false)
+  newArrival      Boolean      @default(false)
+  rating          Float        @default(0)
+  reviewCount     Int          @default(0)
+  specifications  String?     // JSON object
+  shippingInfo    String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  reviews         Review[]
+  orderItems      OrderItem[]
+
+  @@index([categoryId])
+  @@index([brandId])
+  @@index([slug])
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  author     String
+  rating     Float
+  title      String?
+  comment    String
+  verified   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([productId])
+}
+
+// ---------------------------------------------------------------------
+// CUSTOMER & ACCOUNT
+// ---------------------------------------------------------------------
+
+model Customer {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  firstName     String
+  lastName      String
+  phone         String?
+  passwordHash  String?  // null for guest
+  addresses     String?  // JSON array
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  orders        Order[]
+  wishlist      WishlistItem[]
+
+  @@index([email])
+}
+
+model WishlistItem {
+  id          String   @id @default(cuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  productId   String
+  createdAt   DateTime @default(now())
+
+  @@unique([customerId, productId])
+}
+
+// ---------------------------------------------------------------------
+// ORDERS & CHECKOUT
+// ---------------------------------------------------------------------
+
+model Order {
+  id                String       @id @default(cuid())
+  orderNumber       String       @unique
+  customerId        String?
+  customer          Customer?    @relation(fields: [customerId], references: [id])
+
+  // Customer snapshot (kept on order so guest checkout works)
+  firstName         String
+  lastName          String
+  email             String
+  phone             String
+
+  // Delivery
+  address           String
+  city              String
+  state             String
+  country           String
+  postalCode        String
+  deliveryInstructions String?
+
+  // Totals
+  subtotal          Float
+  shipping          Float
+  discount          Float        @default(0)
+  total            Float
+
+  // Payment
+  paymentMethod    String       // stripe | paystack | flutterwave | cod
+  paymentStatus    String       @default("pending") // pending | paid | failed | refunded
+  paymentReference String?
+  transactionId    String?
+
+  // Fulfillment
+  orderStatus      String       @default("pending") // pending | confirmed | shipped | delivered | cancelled
+
+  items            OrderItem[]
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  @@index([email])
+  @@index([customerId])
+  @@index([orderStatus])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  name        String
+  slug        String
+  sku         String
+  image       String
+  price       Float
+  quantity    Int
+  size        String?
+  color       String?
+
+  @@index([orderId])
+}
+
+// ---------------------------------------------------------------------
+// CONTENT (policy pages, FAQ, etc.)
+// ---------------------------------------------------------------------
+
+model ContentPage {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  body      String
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}
