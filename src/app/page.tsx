@@ -39,6 +39,8 @@ export default function Page() {
         "/orders": <OrderHistoryPage />,
         "/contact": <ContactPage />,
         "/about": <StaticPage slug="about" />,
+        "/distributor": <StaticPage slug="distributor" />,
+        "/five-year-plan": <StaticPage slug="five-year-plan" />,
         "/faq": <StaticPage slug="faq" />,
         "/shipping": <StaticPage slug="shipping" />,
         "/returns": <StaticPage slug="returns" />,

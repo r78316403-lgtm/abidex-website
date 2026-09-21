@@ -1,76 +1,83 @@
 // =====================================================================
-// SITE CONFIG — single source of truth for business info & brand
+// SITE CONFIG — KEDI HEALTHCARE
 // ---------------------------------------------------------------------
-// Replace placeholders below with real values. Everything in the
-// UI that references business info reads from this file so changes
-// here propagate everywhere automatically.
+// Single source of truth for business info, brand, currency, shipping,
+// and payment provider. Edit values here; they propagate everywhere.
 // =====================================================================
 
 export const siteConfig = {
   // --- Brand ---
-  name: "Mercato",
-  tagline: "Considered goods for everyday life",
+  name: "KEDI Healthcare",
+  legalName: "KEDI HEALTHCARE IND. NIG. LTD.",
+  tagline: "Open Up To A New Life With KEDI",
+  slogan: "KEDI Brings You Health, Wealth, and Happiness!",
   description:
-    "Mercato is a modern general store for people who care about quality. We curate electronics, fashion, home goods, and accessories from makers who treat their craft well.",
-  url: "https://your-store.com", // ← replace with your domain
+    "KEDI Healthcare is a leading health and wellness company committed to improving lives through quality herbal products, wellness solutions, and rewarding business opportunities that support healthier communities across Nigeria and beyond.",
+  url: "https://www.kedihealth.com",
+  founder: "Mr. William Zhao",
+  founderTitle: "Founder / Chairman",
 
   // --- Contact ---
   contact: {
-    email: "hello@your-store.com", // ← replace
-    phone: "+1 (555) 012-3456", // ← replace
-    whatsapp: "+15550123456", // ← replace (international format, no +)
-    address: "123 Market Street, Suite 200, Your City, YC 12345", // ← replace
-    hours: "Mon-Fri 9am-6pm, Sat 10am-4pm",
+    email: "info@kedihealth.com",                  // ← replace with real
+    phone: "+234 (0) 803 314 8333",                // ← replace with real
+    whatsapp: "2348033148333",                     // ← international format, no +
+    address: "KEDI Healthcare Ind. Nig. Ltd., Lagos, Nigeria",  // ← replace with full address
+    hours: "Mon-Fri 9am to 5pm",
   },
 
   // --- Social ---
   social: {
-    instagram: "https://instagram.com/yourstore",
-    twitter: "https://twitter.com/yourstore",
-    facebook: "https://facebook.com/yourstore",
-    youtube: "https://youtube.com/@yourstore",
-    pinterest: "https://pinterest.com/yourstore",
+    facebook: "https://facebook.com/kedihealthcare",
+    instagram: "https://instagram.com/kedihealthcare",
+    twitter: "https://twitter.com/kedihealthcare",
+    youtube: "https://youtube.com/@kedihealthcare",
+    linkedin: "https://linkedin.com/company/kedi-healthcare",
   },
 
   // --- Currency ---
+  // KEDI is Nigerian — default currency is Naira. Customers can still
+  // see approximate USD equivalents by enabling multi-currency later.
   currency: {
-    code: "USD",
-    symbol: "$",
+    code: "NGN",
+    symbol: "₦",
     position: "before" as "before" | "after",
   },
 
   // --- Shipping ---
   shipping: {
-    freeThreshold: 50, // orders above this get free standard shipping
-    standardRate: 5.99,
-    expressRate: 19.99,
+    freeThreshold: 50000,   // ₦50,000 — orders above get free shipping
+    standardRate: 2500,     // ₦2,500 standard nationwide
+    expressRate: 5500,      // ₦5,500 express / next-day
   },
 
   // --- Payment ---
-  // Reads from env. Provider is auto-selected from PAYMENT_PROVIDER env var.
+  // Paystack & Flutterwave are the dominant Nigerian gateways.
+  // Set PAYMENT_PROVIDER in .env to "paystack" or "flutterwave".
   payment: {
-    provider: (process.env.PAYMENT_PROVIDER ?? "stripe") as
+    provider: (process.env.PAYMENT_PROVIDER ?? "paystack") as
       | "stripe"
       | "paystack"
       | "flutterwave"
       | "cod",
-    // Public keys (safe to expose in frontend). Set in .env:
-    //   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-    //   NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
-    //   NEXT_PUBLIC_FLUTTERWAVE_PUBLIC_KEY
   },
 
   // --- Google Sheets ---
-  // Set in .env: GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY,
-  // GOOGLE_SHEETS_SPREADSHEET_ID, GOOGLE_SHEETS_RANGE (default: "Orders!A:T")
   googleSheets: {
     enabled: Boolean(process.env.GOOGLE_SHEETS_SPREADSHEET_ID),
   },
 
   // --- Legal / Footer ---
   legal: {
-    registrationYear: 2024,
-    legalName: "Mercato Retail Ltd.",
+    registrationYear: 2005,   // KEDI started in Nigeria around 2005/2006
+    legalName: "KEDI HEALTHCARE IND. NIG. LTD.",
+  },
+
+  // --- KEDI-specific programs ---
+  // surfaced in the homepage and footer for brand alignment
+  programs: {
+    fiveYearPlan: "2024 – 2028",
+    carAwardYear: "2026",
   },
 } as const;
 
@@ -80,12 +87,11 @@ export type SiteConfig = typeof siteConfig;
 export function formatPrice(amount: number, opts?: { currency?: string }): string {
   const cfg = siteConfig.currency;
   const currency = opts?.currency ?? cfg.code;
-  const formatter = new Intl.NumberFormat("en-US", {
+  const formatter = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency,
-    minimumFractionDigits: 2,
+    maximumFractionDigits: 0,   // Naira typically has no kobo in retail
+    minimumFractionDigits: 0,
   });
-  const formatted = formatter.format(amount);
-  if (cfg.position === "before") return formatted;
-  return formatted.replace(currency, "").trim() + " " + currency;
+  return formatter.format(amount);
 }

@@ -4,9 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =====================================================================
-   DESIGN TOKENS — Mercato
-   Premium, conversion-focused palette. Warm neutrals + a confident
-   ember accent. NO indigo / NO blue (per project rules).
+   DESIGN TOKENS — KEDI HEALTHCARE
+   ---------------------------------------------------------------------
+   Deep herbal green primary + warm gold accent. Reflects KEDI's
+   positioning as a premium herbal health & wellness brand.
+   NO blue / NO indigo (per project rules).
    ===================================================================== */
 @theme inline {
   --color-background: var(--background);
@@ -53,80 +55,80 @@
 :root {
   --radius: 0.5rem;
 
-  /* Warm off-white background */
-  --background: oklch(0.99 0.005 60);
-  --foreground: oklch(0.18 0.01 60);
+  /* Warm cream background — soft, inviting, health-spa feel */
+  --background: oklch(0.99 0.008 100);
+  --foreground: oklch(0.22 0.03 150);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 60);
+  --card-foreground: oklch(0.22 0.03 150);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 60);
+  --popover-foreground: oklch(0.22 0.03 150);
 
-  /* Deep espresso primary */
-  --primary: oklch(0.22 0.02 60);
-  --primary-foreground: oklch(0.98 0.005 60);
+  /* Deep herbal green primary */
+  --primary: oklch(0.35 0.09 155);
+  --primary-foreground: oklch(0.98 0.01 100);
 
-  /* Soft warm sand secondary */
-  --secondary: oklch(0.96 0.01 60);
-  --secondary-foreground: oklch(0.22 0.02 60);
+  /* Soft sage secondary */
+  --secondary: oklch(0.95 0.025 140);
+  --secondary-foreground: oklch(0.3 0.08 155);
 
-  --muted: oklch(0.96 0.008 60);
-  --muted-foreground: oklch(0.5 0.01 60);
+  --muted: oklch(0.96 0.012 100);
+  --muted-foreground: oklch(0.5 0.02 140);
 
-  /* Ember accent — used for CTAs, sale tags, highlights */
-  --accent: oklch(0.62 0.18 35);
-  --accent-foreground: oklch(0.98 0.005 60);
+  /* Warm gold accent — premium, success, prosperity */
+  --accent: oklch(0.72 0.15 80);
+  --accent-foreground: oklch(0.2 0.04 80);
 
   --destructive: oklch(0.58 0.24 27);
 
-  --border: oklch(0.92 0.01 60);
-  --input: oklch(0.94 0.008 60);
-  --ring: oklch(0.62 0.18 35);
+  --border: oklch(0.9 0.02 120);
+  --input: oklch(0.93 0.015 100);
+  --ring: oklch(0.72 0.15 80);
 
-  --chart-1: oklch(0.62 0.18 35);
-  --chart-2: oklch(0.55 0.12 150);
-  --chart-3: oklch(0.45 0.10 60);
-  --chart-4: oklch(0.7 0.15 75);
-  --chart-5: oklch(0.4 0.05 250);
+  --chart-1: oklch(0.35 0.09 155);
+  --chart-2: oklch(0.72 0.15 80);
+  --chart-3: oklch(0.55 0.1 140);
+  --chart-4: oklch(0.7 0.12 50);
+  --chart-5: oklch(0.45 0.08 180);
 
-  --sidebar: oklch(0.985 0.005 60);
-  --sidebar-foreground: oklch(0.18 0.01 60);
-  --sidebar-primary: oklch(0.22 0.02 60);
-  --sidebar-primary-foreground: oklch(0.98 0.005 60);
-  --sidebar-accent: oklch(0.96 0.008 60);
-  --sidebar-accent-foreground: oklch(0.22 0.02 60);
-  --sidebar-border: oklch(0.92 0.01 60);
-  --sidebar-ring: oklch(0.62 0.18 35);
+  --sidebar: oklch(0.985 0.008 100);
+  --sidebar-foreground: oklch(0.22 0.03 150);
+  --sidebar-primary: oklch(0.35 0.09 155);
+  --sidebar-primary-foreground: oklch(0.98 0.01 100);
+  --sidebar-accent: oklch(0.95 0.025 140);
+  --sidebar-accent-foreground: oklch(0.3 0.08 155);
+  --sidebar-border: oklch(0.9 0.02 120);
+  --sidebar-ring: oklch(0.72 0.15 80);
 }
 
 .dark {
-  --background: oklch(0.14 0.005 60);
-  --foreground: oklch(0.96 0.005 60);
-  --card: oklch(0.18 0.01 60);
-  --card-foreground: oklch(0.96 0.005 60);
-  --popover: oklch(0.2 0.01 60);
-  --popover-foreground: oklch(0.96 0.005 60);
-  --primary: oklch(0.96 0.005 60);
-  --primary-foreground: oklch(0.18 0.01 60);
-  --secondary: oklch(0.24 0.01 60);
-  --secondary-foreground: oklch(0.96 0.005 60);
-  --muted: oklch(0.24 0.01 60);
-  --muted-foreground: oklch(0.7 0.01 60);
-  --accent: oklch(0.7 0.18 35);
-  --accent-foreground: oklch(0.15 0.01 60);
+  --background: oklch(0.16 0.02 150);
+  --foreground: oklch(0.96 0.01 100);
+  --card: oklch(0.2 0.025 150);
+  --card-foreground: oklch(0.96 0.01 100);
+  --popover: oklch(0.22 0.03 150);
+  --popover-foreground: oklch(0.96 0.01 100);
+  --primary: oklch(0.7 0.1 140);
+  --primary-foreground: oklch(0.16 0.02 150);
+  --secondary: oklch(0.26 0.025 150);
+  --secondary-foreground: oklch(0.96 0.01 100);
+  --muted: oklch(0.26 0.02 150);
+  --muted-foreground: oklch(0.7 0.02 100);
+  --accent: oklch(0.78 0.15 80);
+  --accent-foreground: oklch(0.16 0.02 150);
   --destructive: oklch(0.7 0.2 22);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.7 0.18 35);
-  --sidebar: oklch(0.18 0.01 60);
-  --sidebar-foreground: oklch(0.96 0.005 60);
-  --sidebar-primary: oklch(0.96 0.005 60);
-  --sidebar-primary-foreground: oklch(0.18 0.01 60);
-  --sidebar-accent: oklch(0.24 0.01 60);
-  --sidebar-accent-foreground: oklch(0.96 0.005 60);
+  --ring: oklch(0.78 0.15 80);
+  --sidebar: oklch(0.2 0.025 150);
+  --sidebar-foreground: oklch(0.96 0.01 100);
+  --sidebar-primary: oklch(0.7 0.1 140);
+  --sidebar-primary-foreground: oklch(0.16 0.02 150);
+  --sidebar-accent: oklch(0.26 0.025 150);
+  --sidebar-accent-foreground: oklch(0.96 0.01 100);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.7 0.18 35);
+  --sidebar-ring: oklch(0.78 0.15 80);
 }
 
 * {
@@ -145,33 +147,28 @@ body {
   font-family: var(--font-playfair), Georgia, serif;
 }
 
-/* Smooth focus ring */
 :focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
 }
 
-/* Custom scrollbar for long lists */
 .mercato-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
 .mercato-scroll::-webkit-scrollbar-track { background: transparent; }
 .mercato-scroll::-webkit-scrollbar-thumb {
-  background: oklch(0.85 0.01 60);
+  background: oklch(0.85 0.02 120);
   border-radius: 4px;
 }
-.mercato-scroll::-webkit-scrollbar-thumb:hover { background: oklch(0.7 0.01 60); }
+.mercato-scroll::-webkit-scrollbar-thumb:hover { background: oklch(0.7 0.04 120); }
 
-/* Subtle entrance animation */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up { animation: fade-up 0.4s ease-out both; }
 
-/* Hide horizontal scrollbars on filtered carousels */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Skeleton shimmer */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -180,4 +177,11 @@ body {
   background: linear-gradient(90deg, var(--muted) 25%, var(--secondary) 50%, var(--muted) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
+}
+
+/* KEDI brand: subtle leaf texture for hero backgrounds */
+.bg-leaf-pattern {
+  background-image:
+    radial-gradient(circle at 20% 20%, oklch(0.55 0.08 140 / 0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 60%, oklch(0.72 0.15 80 / 0.08) 0, transparent 40%);
 }

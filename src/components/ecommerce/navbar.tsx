@@ -102,6 +102,12 @@ export function Navbar() {
                 </div>
               </div>
             </div>
+            <Link to="/distributor" className="px-3 py-2 rounded-md hover:bg-secondary transition-colors text-accent font-medium">
+              Distributor
+            </Link>
+            <Link to="/five-year-plan" className="px-3 py-2 rounded-md hover:bg-secondary transition-colors">
+              Five-Year Plan
+            </Link>
             <Link to="/about" className="px-3 py-2 rounded-md hover:bg-secondary transition-colors">
               About
             </Link>
@@ -239,14 +245,17 @@ export function Navbar() {
               </MobileLink>
             ))}
             <div className="border-t border-border my-3" />
-            <MobileLink to="/wishlist" onClick={() => setMobileOpen(false)}>Wishlist ({wishlistCount})</MobileLink>
-            <MobileLink to="/account" onClick={() => setMobileOpen(false)}>Account</MobileLink>
-            <MobileLink to="/orders" onClick={() => setMobileOpen(false)}>Order History</MobileLink>
-            <MobileLink to="/about" onClick={() => setMobileOpen(false)}>About</MobileLink>
+            <MobileLink to="/distributor" onClick={() => setMobileOpen(false)}>Become a Distributor</MobileLink>
+            <MobileLink to="/five-year-plan" onClick={() => setMobileOpen(false)}>Five-Year Plan</MobileLink>
+            <MobileLink to="/about" onClick={() => setMobileOpen(false)}>About KEDI</MobileLink>
             <MobileLink to="/contact" onClick={() => setMobileOpen(false)}>Contact</MobileLink>
             <MobileLink to="/faq" onClick={() => setMobileOpen(false)}>FAQ</MobileLink>
             <MobileLink to="/shipping" onClick={() => setMobileOpen(false)}>Shipping</MobileLink>
             <MobileLink to="/returns" onClick={() => setMobileOpen(false)}>Returns</MobileLink>
+            <div className="border-t border-border my-3" />
+            <MobileLink to="/wishlist" onClick={() => setMobileOpen(false)}>Wishlist ({wishlistCount})</MobileLink>
+            <MobileLink to="/account" onClick={() => setMobileOpen(false)}>Account</MobileLink>
+            <MobileLink to="/orders" onClick={() => setMobileOpen(false)}>Order History</MobileLink>
           </div>
         </SheetContent>
       </Sheet>

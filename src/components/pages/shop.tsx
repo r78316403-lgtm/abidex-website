@@ -321,7 +321,7 @@ export function ShopPage() {
         description={
           category
             ? categories?.find((c) => c.slug === category)?.description ?? ""
-            : "Browse the full Mercato collection. Filter, sort, and find your next favourite thing."
+            : "Browse the full KEDI collection. Filter, sort, and find the right herbal products, vitamins, or wellness equipment for your needs."
         }
       />
 

@@ -18,30 +18,31 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-store.com"),
+  metadataBase: new URL("https://www.kedihealth.com"),
   title: {
-    default: "Mercato — Considered goods for everyday life",
-    template: "%s | Mercato",
+    default: "KEDI Healthcare — Open Up To A New Life",
+    template: "%s | KEDI Healthcare",
   },
   description:
-    "A modern general store for people who care about quality. Shop electronics, fashion, home goods, and accessories from makers who treat their craft well.",
+    "KEDI Healthcare is a leading Nigerian health and wellness company offering quality herbal products, vitamins & supplements, and wellness equipment. Open up to a new life with KEDI.",
   keywords: [
-    "online store", "ecommerce", "electronics", "fashion", "home goods",
-    "beauty", "accessories", "sports", "outdoor", "Mercato",
+    "KEDI Healthcare", "herbal medicine", "Chinese herbs", "vitamins", "supplements",
+    "wellness", "Nigeria", "Reishi", "Cordyceps", "Vigor Essential", "herbal products",
+    "NAFDAC registered", "distributor opportunity",
   ],
-  authors: [{ name: "Mercato" }],
+  authors: [{ name: "KEDI Healthcare Ind. Nig. Ltd." }],
   openGraph: {
-    title: "Mercato — Considered goods for everyday life",
+    title: "KEDI Healthcare — Open Up To A New Life",
     description:
-      "A modern general store for people who care about quality. Shop electronics, fashion, home goods, and accessories.",
-    url: "https://your-store.com",
-    siteName: "Mercato",
+      "Quality herbal products, wellness solutions, and rewarding business opportunities. KEDI Brings You Health, Wealth, and Happiness!",
+    url: "https://www.kedihealth.com",
+    siteName: "KEDI Healthcare",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mercato — Considered goods for everyday life",
-    description: "A modern general store for people who care about quality.",
+    title: "KEDI Healthcare — Open Up To A New Life",
+    description: "Quality herbal products, wellness solutions, and rewarding business opportunities.",
   },
   robots: {
     index: true,
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#1f5a3e",
   width: "device-width",
   initialScale: 1,
 };
