@@ -10,8 +10,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/ecommerce/ui-blocks";
 import { Package, Search, ArrowRight } from "lucide-react";
 import type { Order } from "@/lib/types";
+import { useSeo } from "@/lib/use-seo";
 
 export function OrderHistoryPage() {
+  useSeo({
+    title: "Order History — KEDI Healthcare",
+    description: "View your past KEDI Healthcare orders.",
+    canonicalPath: "#/orders",
+    noIndex: true,
+  });
   const { navigate } = useRouter();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);

@@ -1,9 +1,9 @@
 "use client";
 
 import { Link } from "@/lib/router";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, whatsappLink, telegramLink } from "@/lib/site-config";
 import { useQuery } from "@tanstack/react-query";
-import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Youtube, Linkedin, Sprout } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Youtube, Linkedin, Sprout, MessageCircle, Send } from "lucide-react";
 
 export function Footer() {
   const { data: categories } = useQuery({
@@ -31,17 +31,23 @@ export function Footer() {
             <p className="text-xs text-primary-foreground/70 mb-4 max-w-xs">
               {siteConfig.tagline}. A leading health and wellness company in Nigeria.
             </p>
-            <div className="flex gap-2">
-              <a href={siteConfig.social.facebook} aria-label="Facebook" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
+            <div className="flex flex-wrap gap-2">
+              <a href={siteConfig.social.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-[#25D366] hover:text-white transition-colors flex items-center justify-center">
+                <MessageCircle className="h-4 w-4" />
+              </a>
+              <a href={siteConfig.social.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-[#0088cc] hover:text-white transition-colors flex items-center justify-center">
+                <Send className="h-4 w-4" />
+              </a>
+              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href={siteConfig.social.instagram} aria-label="Instagram" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
+              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href={siteConfig.social.youtube} aria-label="YouTube" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
+              <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
                 <Youtube className="h-4 w-4" />
               </a>
-              <a href={siteConfig.social.linkedin} aria-label="LinkedIn" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="h-8 w-8 rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-colors flex items-center justify-center">
                 <Linkedin className="h-4 w-4" />
               </a>
             </div>
@@ -88,10 +94,22 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Contact</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li className="flex items-start gap-2">
-                <Mail className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-accent transition-colors break-all">
-                  {siteConfig.contact.email}
+              <li>
+                <a href={`mailto:${siteConfig.contact.email}`} className="flex items-start gap-2 hover:text-accent transition-colors">
+                  <Mail className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                  <span className="break-all">{siteConfig.contact.email}</span>
+                </a>
+              </li>
+              <li>
+                <a href={whatsappLink("Hello KEDI Healthcare!")} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 hover:text-accent transition-colors">
+                  <MessageCircle className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                  <span>WhatsApp: {siteConfig.contact.whatsappDisplay}</span>
+                </a>
+              </li>
+              <li>
+                <a href={telegramLink()} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 hover:text-accent transition-colors">
+                  <Send className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                  <span>Telegram: {siteConfig.contact.telegramDisplay}</span>
                 </a>
               </li>
               <li className="flex items-start gap-2">

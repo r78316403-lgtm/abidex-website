@@ -6,6 +6,51 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter, Link } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileQuestion } from "lucide-react";
+import { useSeo } from "@/lib/use-seo";
+import { faqSchema, breadcrumbSchema } from "@/lib/structured-data";
+
+const SEO_META: Record<string, { title: string; description: string }> = {
+  about: {
+    title: "About KEDI Healthcare — Our Story, Founder & Mission",
+    description:
+      "KEDI Healthcare Ind. Nig. Ltd. is a leading Nigerian health and wellness company offering quality herbal products since 2005. Founded by Mr. William Zhao. Discover our story and mission.",
+  },
+  faq: {
+    title: "Frequently Asked Questions — KEDI Healthcare Nigeria",
+    description:
+      "Answers to common questions about KEDI herbal products, ordering, shipping, returns, NAFDAC registration, and becoming a distributor. Get the info you need fast.",
+  },
+  distributor: {
+    title: "Become a KEDI Distributor — Build a Sustainable Income",
+    description:
+      "Join the KEDI distributor network and build a sustainable income sharing quality healthcare products. Weekly training, mentorship, 2026 Car Award, Impact Fund, Aloe House.",
+  },
+  "five-year-plan": {
+    title: "KEDI Five Years Development Plan (2024-2028)",
+    description:
+      "KEDI Healthcare's 2024-2028 corporate blueprint: product innovation, distributor empowerment (2026 Car Award, Impact Fund), and community impact across Nigeria.",
+  },
+  shipping: {
+    title: "Shipping & Delivery — KEDI Healthcare Nigeria",
+    description:
+      "Free shipping on orders above ₦50,000. Lagos: 1-2 business days. Nationwide: 3-5 days. Express shipping available. Track your order from our Lagos warehouse.",
+  },
+  returns: {
+    title: "Returns & Refund Policy — KEDI Healthcare",
+    description:
+      "7-day return policy on unopened items in original packaging. Refunds processed within 5 business days. Damaged or incorrect items replaced at no cost.",
+  },
+  privacy: {
+    title: "Privacy Policy — KEDI Healthcare",
+    description:
+      "KEDI Healthcare collects only what's needed to fulfill orders and improve services. We never sell your information. Read our full privacy policy.",
+  },
+  terms: {
+    title: "Terms & Conditions — KEDI Healthcare",
+    description:
+      "Terms governing the use of the KEDI Healthcare website, ordering, payment, and delivery. Products sold for personal use only.",
+  },
+};
 
 export function StaticPage({ slug }: { slug: string }) {
   const navigate = useRouter().navigate;
@@ -16,6 +61,20 @@ export function StaticPage({ slug }: { slug: string }) {
       if (!r.ok) return null;
       return (await r.json()) as { title: string; body: string };
     },
+  });
+
+  const meta = SEO_META[slug];
+  useSeo({
+    title: meta?.title ?? data?.title ?? "KEDI Healthcare",
+    description: meta?.description ?? data?.title,
+    canonicalPath: `#/${slug}`,
+    noIndex: false,
+    jsonLd: slug === "faq"
+      ? [faqSchema(extractFaqs(data?.body ?? ""))]
+      : breadcrumbSchema([
+          { name: "Home", url: "" },
+          { name: data?.title ?? slug, url: `#/${slug}` },
+        ]),
   });
 
   if (isLoading) {
@@ -117,4 +176,17 @@ function FaqPage({ body }: { body: string }) {
       </div>
     </div>
   );
+}
+
+// Extract Q&A pairs from the FAQ body for FAQ schema
+function extractFaqs(body: string): { question: string; answer: string }[] {
+  const paragraphs = body.split(/\n\n+/);
+  // First paragraph is intro; rest are Q/A pairs
+  return paragraphs.slice(1).map((p) => {
+    const [q, ...rest] = p.split(/\n/);
+    return {
+      question: q.replace(/^Q:?\s*/i, "").trim(),
+      answer: rest.join("\n").replace(/^A:?\s*/i, "").trim(),
+    };
+  }).filter((p) => p.question && p.answer);
 }

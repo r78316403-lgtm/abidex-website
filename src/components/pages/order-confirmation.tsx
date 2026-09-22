@@ -11,12 +11,20 @@ import {
   CheckCircle2, Package, Truck, Mail, ArrowRight, Loader2, AlertCircle,
 } from "lucide-react";
 import type { Order } from "@/lib/types";
+import { useSeo } from "@/lib/use-seo";
 
 export function OrderConfirmationPage() {
   const { route, navigate } = useRouter();
   const orderNumber = route.segments[1] ?? "";
   const pending = route.query.get("pending") === "1" || route.query.get("status") === "pending";
   const [verifying, setVerifying] = useState(false);
+
+  useSeo({
+    title: `Order Confirmation ${orderNumber ? `— ${orderNumber}` : ""}`,
+    description: "Your KEDI Healthcare order has been received. Thank you for your purchase.",
+    canonicalPath: orderNumber ? `#/order/${orderNumber}` : "#/order",
+    noIndex: true,
+  });
 
   const { data, isLoading, refetch } = useQuery<{ order: Order }>({
     queryKey: ["order", orderNumber],

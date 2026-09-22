@@ -6,11 +6,23 @@ import { ProductCard } from "@/components/ecommerce/product-card";
 import { EmptyState, SectionHeading } from "@/components/ecommerce/ui-blocks";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PackageSearch } from "lucide-react";
+import { useSeo } from "@/lib/use-seo";
 import type { Product, Category } from "@/lib/types";
 
 export function CategoryPage() {
   const { route, navigate } = useRouter();
   const categorySlug = route.segments[1] ?? "";
+
+  // SEO: call useSeo unconditionally before early returns.
+  useSeo({
+    title: categorySlug
+      ? `${categorySlug.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())} — Buy Online in Nigeria`
+      : "All Categories — KEDI Healthcare",
+    description: categorySlug
+      ? "Browse KEDI Healthcare products. NAFDAC-registered. Nationwide delivery in Nigeria."
+      : "Browse all KEDI Healthcare product categories — herbal medicine, vitamins, supplements, and wellness equipment.",
+    canonicalPath: categorySlug ? `#/category/${categorySlug}` : "#/category",
+  });
   const { data: categories } = useQuery<Category[]>({
     queryKey: ["categories"],
     queryFn: async () => (await fetch("/api/categories")).json(),
@@ -93,6 +105,8 @@ export function CategoryPage() {
       </div>
     );
   }
+
+  // (SEO handled at top of component)
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-6 md:py-10 animate-fade-up">

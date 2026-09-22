@@ -8,8 +8,15 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
 import { User, Mail, Package, Heart, LogOut, ArrowRight } from "lucide-react";
+import { useSeo } from "@/lib/use-seo";
 
 export function AccountPage() {
+  useSeo({
+    title: "My Account — KEDI Healthcare",
+    description: "Manage your KEDI Healthcare account, orders, and wishlist.",
+    canonicalPath: "#/account",
+    noIndex: true,
+  });
   const navigate = useRouter().navigate;
   const customer = useCustomerStore();
   const signIn = useCustomerStore((s) => s.signIn);

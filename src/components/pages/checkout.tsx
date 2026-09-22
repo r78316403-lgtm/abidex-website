@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import { ArrowRight, ShieldCheck, Truck, CreditCard, Loader2, Lock } from "lucide-react";
 import { useCustomerStore } from "@/lib/wishlist-store";
+import { useSeo } from "@/lib/use-seo";
 import type { ApiResponse } from "@/lib/types";
 
 const COUNTRIES = ["United States", "Canada", "United Kingdom", "Australia", "Germany", "France", "Nigeria", "South Africa", "Kenya", "Ghana"];
@@ -29,6 +30,12 @@ type CreateOrderResponse = {
 };
 
 export function CheckoutPage() {
+  useSeo({
+    title: "Secure Checkout — KEDI Healthcare",
+    description: "Complete your KEDI Healthcare order securely with Paystack, Flutterwave, or cash on delivery.",
+    canonicalPath: "#/checkout",
+    noIndex: true,
+  });
   const navigate = useRouter().navigate;
   const items = useCartStore((s) => s.items);
   const subtotal = useCartStore(selectCartSubtotal);

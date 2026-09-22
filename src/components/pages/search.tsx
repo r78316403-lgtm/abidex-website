@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Search, PackageSearch } from "lucide-react";
 import { useState } from "react";
 import type { Product } from "@/lib/types";
+import { useSeo } from "@/lib/use-seo";
 
 export function SearchResultsPage() {
   const { route, navigate } = useRouter();
@@ -20,6 +21,15 @@ export function SearchResultsPage() {
     setLastQ(q);
     setInput(q);
   }
+
+  useSeo({
+    title: q ? `Search: "${q}" — KEDI Healthcare Nigeria` : "Search Products — KEDI Healthcare",
+    description: q
+      ? `Search results for "${q}" in KEDI Healthcare's catalog of herbal medicines, vitamins, and wellness equipment. NAFDAC-registered products with nationwide delivery.`
+      : "Search KEDI Healthcare's full catalog of herbal medicines, vitamins, supplements, and wellness equipment.",
+    canonicalPath: q ? `#/search?q=${encodeURIComponent(q)}` : "#/search",
+    noIndex: true,  // search results pages shouldn't be indexed
+  });
 
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["products", "search", q],

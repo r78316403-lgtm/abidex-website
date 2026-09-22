@@ -6,8 +6,15 @@ import { formatPrice, siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ecommerce/ui-blocks";
 import { ArrowRight, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { useSeo } from "@/lib/use-seo";
 
 export function CartPage() {
+  useSeo({
+    title: "Your Shopping Cart",
+    description: "Review your KEDI Healthcare cart and proceed to checkout.",
+    canonicalPath: "#/cart",
+    noIndex: true,
+  });
   const { items, updateQuantity, removeItem } = useCartStore();
   const navigate = useRouter().navigate;
   const subtotal = useCartStore(selectCartSubtotal);

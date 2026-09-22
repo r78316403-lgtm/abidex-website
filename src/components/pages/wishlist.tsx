@@ -10,8 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { toast } from "sonner";
+import { useSeo } from "@/lib/use-seo";
 
 export function WishlistPage() {
+  useSeo({
+    title: "My Wishlist — KEDI Healthcare",
+    description: "Your saved KEDI Healthcare products.",
+    canonicalPath: "#/wishlist",
+    noIndex: true,
+  });
   const navigate = useRouter().navigate;
   const productIds = useWishlistStore((s) => s.productIds);
   const removeWish = useWishlistStore((s) => s.remove);

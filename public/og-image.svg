@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background: deep herbal green -->
+  <rect width="1200" height="630" fill="#1f5a3e"/>
+
+  <!-- Decorative leaf pattern (subtle) -->
+  <circle cx="200" cy="120" r="180" fill="#2a7a55" opacity="0.4"/>
+  <circle cx="1050" cy="520" r="220" fill="#c89b3c" opacity="0.15"/>
+  <circle cx="950" cy="100" r="120" fill="#2a7a55" opacity="0.3"/>
+
+  <!-- Sprout/leaf icon -->
+  <g transform="translate(140, 200)">
+    <path d="M60 110 C30 80, 30 30, 60 10 C90 30, 90 80, 60 110 Z" fill="#c89b3c"/>
+    <path d="M60 110 C60 80, 80 60, 110 50 C110 80, 90 110, 60 110 Z" fill="#c89b3c" opacity="0.85"/>
+    <path d="M60 110 C60 80, 40 60, 10 50 C10 80, 30 110, 60 110 Z" fill="#c89b3c" opacity="0.85"/>
+    <rect x="55" y="100" width="10" height="60" fill="#c89b3c"/>
+  </g>
+
+  <!-- Brand text -->
+  <text x="140" y="380" font-family="Georgia, serif" font-size="68" font-weight="bold" fill="#ffffff">KEDI Healthcare</text>
+
+  <!-- Tagline -->
+  <text x="140" y="445" font-family="Arial, sans-serif" font-size="32" fill="#c89b3c" font-style="italic">Open Up To A New Life With KEDI</text>
+
+  <!-- Slogan -->
+  <text x="140" y="510" font-family="Arial, sans-serif" font-size="22" fill="#ffffff" opacity="0.85">KEDI Brings You Health, Wealth, and Happiness!</text>
+
+  <!-- Bottom badge -->
+  <rect x="140" y="540" width="380" height="44" rx="22" fill="#c89b3c"/>
+  <text x="330" y="568" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f5a3e" text-anchor="middle">Herbal Medicine · Vitamins · Wellness</text>
+</svg>

@@ -22,6 +22,8 @@ import { Badge } from "@/components/ui/badge";
 import { Search, SlidersHorizontal, X, PackageSearch } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Product, Category, Brand } from "@/lib/types";
+import { useSeo } from "@/lib/use-seo";
+import { itemListSchema } from "@/lib/structured-data";
 
 const SORTS = [
   { value: "featured", label: "Featured" },
@@ -162,6 +164,25 @@ export function ShopPage() {
     setSelectedSizes([]); setSelectedColors([]);
     navigate("/shop");
   };
+
+  // SEO metadata for the shop page
+  const seoTitle = category
+    ? `${categories?.find((c) => c.slug === category)?.name ?? "Shop"} — Buy Online in Nigeria`
+    : q
+    ? `Search: ${q} — KEDI Healthcare Nigeria`
+    : "Shop All Products — Herbal Medicine, Vitamins & Wellness Equipment";
+  const seoDesc = category
+    ? categories?.find((c) => c.slug === category)?.description ??
+      `Browse ${category} products from KEDI Healthcare. NAFDAC-registered, nationwide delivery.`
+    : "Browse all KEDI Healthcare products — herbal medicines, vitamins, supplements, and wellness equipment. NAFDAC-registered. Free shipping over ₦50,000.";
+  useSeo({
+    title: seoTitle,
+    description: seoDesc,
+    canonicalPath: category ? `#/category/${category}` : "#/shop",
+    jsonLd: filtered.length > 0
+      ? itemListSchema(filtered.slice(0, 20), categories?.find((c) => c.slug === category)?.name)
+      : undefined,
+  });
 
   const activeFilterCount =
     (category ? 1 : 0) + (brand ? 1 : 0) + (q ? 1 : 0) +

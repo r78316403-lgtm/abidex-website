@@ -1,0 +1,14 @@
+{
+  "name": "KEDI Healthcare",
+  "short_name": "KEDI",
+  "description": "Open Up To A New Life With KEDI — Quality herbal products, vitamins, and wellness equipment in Nigeria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f5a3e",
+  "theme_color": "#1f5a3e",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["health", "shopping", "lifestyle"]
+}

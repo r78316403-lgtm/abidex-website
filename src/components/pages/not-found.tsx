@@ -3,8 +3,15 @@
 import { useRouter, Link } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import { Home, Search } from "lucide-react";
+import { useSeo } from "@/lib/use-seo";
 
 export function NotFoundPage() {
+  useSeo({
+    title: "Page Not Found (404)",
+    description: "The page you're looking for doesn't exist.",
+    canonicalPath: "",
+    noIndex: true,
+  });
   const navigate = useRouter().navigate;
   return (
     <div className="container mx-auto max-w-md px-4 py-16 md:py-24 text-center animate-fade-up">

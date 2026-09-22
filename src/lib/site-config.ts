@@ -17,12 +17,16 @@ export const siteConfig = {
   founder: "Mr. William Zhao",
   founderTitle: "Founder / Chairman",
 
-  // --- Contact ---
+  // --- Contact (REAL DETAILS) ---
   contact: {
-    email: "info@kedihealth.com",                  // ← replace with real
-    phone: "+234 (0) 803 314 8333",                // ← replace with real
-    whatsapp: "2348033148333",                     // ← international format, no +
-    address: "KEDI Healthcare Ind. Nig. Ltd., Lagos, Nigeria",  // ← replace with full address
+    email: "isiaqmusa123456abc@gmail.com",
+    phone: "+234 916 208 0741",
+    whatsapp: "2349162080741",                     // international format, no +
+    whatsappDisplay: "+234 916 208 0741",
+    telegram: "ahmedabiola",                        // username without @
+    telegramDisplay: "@ahmedabiola",
+    telegramUrl: "https://t.me/ahmedabiola",
+    address: "KEDI Healthcare Ind. Nig. Ltd., Lagos, Nigeria",
     hours: "Mon-Fri 9am to 5pm",
   },
 
@@ -33,11 +37,11 @@ export const siteConfig = {
     twitter: "https://twitter.com/kedihealthcare",
     youtube: "https://youtube.com/@kedihealthcare",
     linkedin: "https://linkedin.com/company/kedi-healthcare",
+    telegram: "https://t.me/ahmedabiola",
+    whatsapp: "https://wa.me/2349162080741",
   },
 
   // --- Currency ---
-  // KEDI is Nigerian — default currency is Naira. Customers can still
-  // see approximate USD equivalents by enabling multi-currency later.
   currency: {
     code: "NGN",
     symbol: "₦",
@@ -46,14 +50,12 @@ export const siteConfig = {
 
   // --- Shipping ---
   shipping: {
-    freeThreshold: 50000,   // ₦50,000 — orders above get free shipping
-    standardRate: 2500,     // ₦2,500 standard nationwide
-    expressRate: 5500,      // ₦5,500 express / next-day
+    freeThreshold: 50000,
+    standardRate: 2500,
+    expressRate: 5500,
   },
 
   // --- Payment ---
-  // Paystack & Flutterwave are the dominant Nigerian gateways.
-  // Set PAYMENT_PROVIDER in .env to "paystack" or "flutterwave".
   payment: {
     provider: (process.env.PAYMENT_PROVIDER ?? "paystack") as
       | "stripe"
@@ -69,15 +71,23 @@ export const siteConfig = {
 
   // --- Legal / Footer ---
   legal: {
-    registrationYear: 2005,   // KEDI started in Nigeria around 2005/2006
+    registrationYear: 2005,
     legalName: "KEDI HEALTHCARE IND. NIG. LTD.",
   },
 
   // --- KEDI-specific programs ---
-  // surfaced in the homepage and footer for brand alignment
   programs: {
     fiveYearPlan: "2024 – 2028",
     carAwardYear: "2026",
+  },
+
+  // --- SEO / Analytics ---
+  // Set these in .env to enable tracking
+  seo: {
+    googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION ?? "",
+    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "",
+    metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "",
+    gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "",
   },
 } as const;
 
@@ -90,8 +100,28 @@ export function formatPrice(amount: number, opts?: { currency?: string }): strin
   const formatter = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency,
-    maximumFractionDigits: 0,   // Naira typically has no kobo in retail
+    maximumFractionDigits: 0,
     minimumFractionDigits: 0,
   });
   return formatter.format(amount);
+}
+
+// Pre-built WhatsApp deep link with prefilled message
+export function whatsappLink(message?: string): string {
+  const base = `https://wa.me/${siteConfig.contact.whatsapp}`;
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+}
+
+// Pre-built Telegram deep link
+export function telegramLink(): string {
+  return siteConfig.contact.telegramUrl;
+}
+
+// Pre-built mailto link
+export function emailLink(subject?: string, body?: string): string {
+  const params = new URLSearchParams();
+  if (subject) params.set("subject", subject);
+  if (body) params.set("body", body);
+  const qs = params.toString();
+  return `mailto:${siteConfig.contact.email}${qs ? `?${qs}` : ""}`;
 }

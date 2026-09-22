@@ -9,6 +9,8 @@ import { useRouter, Link } from "@/lib/router";
 import { useCartStore } from "@/lib/cart-store";
 import { useWishlistStore, useRecentlyViewedStore } from "@/lib/wishlist-store";
 import { formatPrice, siteConfig } from "@/lib/site-config";
+import { useSeo } from "@/lib/use-seo";
+import { productSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { ProductCard, Stars } from "@/components/ecommerce/product-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -78,6 +80,33 @@ export function ProductPage() {
     enabled: recentlyViewed.length > 0,
   });
 
+  // SEO: per-product metadata + structured data (must come before any
+  // early return to satisfy React's rules of hooks).
+  useSeo({
+    title: product
+      ? `${product.name} — Buy Online in Nigeria`
+      : "Product — KEDI Healthcare",
+    description: product
+      ? `${product.shortDescription} NAFDAC-registered. ${product.brand?.name ?? "KEDI Healthcare"}. ${formatPrice(product.salePrice ?? product.price)}. Nationwide delivery.`
+      : "KEDI Healthcare product details.",
+    canonicalPath: `#/product/${slug}`,
+    image: product?.thumbnail,
+    type: "product",
+    jsonLd: product
+      ? [
+          productSchema(product),
+          breadcrumbSchema([
+            { name: "Home", url: "" },
+            { name: "Shop", url: "#/shop" },
+            ...(product.category
+              ? [{ name: product.category.name, url: `#/category/${product.category.slug}` }]
+              : []),
+            { name: product.name, url: `#/product/${product.slug}` },
+          ]),
+        ]
+      : undefined,
+  });
+
   if (isLoading) return <ProductSkeleton />;
   if (!product) {
     return (
@@ -129,34 +158,6 @@ export function ProductPage() {
 
   return (
     <div className="animate-fade-up">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            name: product.name,
-            description: product.shortDescription,
-            sku: product.sku,
-            brand: { "@type": "Brand", name: product.brand?.name },
-            image: product.images,
-            offers: {
-              "@type": "Offer",
-              price: effectivePrice,
-              priceCurrency: product.currency,
-              availability: soldOut
-                ? "https://schema.org/OutOfStock"
-                : "https://schema.org/InStock",
-            },
-            aggregateRating: product.rating > 0 ? {
-              "@type": "AggregateRating",
-              ratingValue: product.rating,
-              reviewCount: product.reviewCount,
-            } : undefined,
-          }),
-        }}
-      />
-
       {/* Breadcrumb */}
       <div className="border-b border-border bg-secondary/30">
         <div className="container mx-auto max-w-7xl px-4 py-3">

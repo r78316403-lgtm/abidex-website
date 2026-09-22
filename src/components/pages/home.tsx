@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
 import { siteConfig } from "@/lib/site-config";
+import { useSeo } from "@/lib/use-seo";
 import {
   Truck, ShieldCheck, RotateCcw, HeadphonesIcon, Star, ArrowRight, ShoppingBag,
   Sprout, Heart, Award, Users,
@@ -20,6 +21,15 @@ import {
 import type { Product, Category } from "@/lib/types";
 
 export function HomePage() {
+  // SEO: home page metadata
+  useSeo({
+    title: "KEDI Healthcare — Herbal Medicine, Vitamins & Wellness Equipment in Nigeria",
+    description:
+      "Shop NAFDAC-registered KEDI herbal medicines, vitamins & supplements, and wellness equipment in Nigeria. Free shipping over ₦50,000. Paystack payment. Open up to a new life with KEDI.",
+    canonicalPath: "",
+    type: "website",
+  });
+
   const navigate = useRouter().navigate;
   const { data: featured } = useQuery<Product[]>({
     queryKey: ["products", "featured"],

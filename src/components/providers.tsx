@@ -11,6 +11,7 @@ import { RouterProvider } from "@/lib/router";
 import { Navbar } from "@/components/ecommerce/navbar";
 import { Footer } from "@/components/ecommerce/footer";
 import { CartSheet } from "@/components/ecommerce/cart-sheet";
+import { FloatingContact } from "@/components/ecommerce/floating-contact";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [qc] = useState(
@@ -36,6 +37,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <Footer />
           </div>
           <CartSheet />
+          <FloatingContact />
         </RouterProvider>
       </QueryClientProvider>
     </ThemeProvider>
