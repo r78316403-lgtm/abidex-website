@@ -11,7 +11,7 @@ export function TrustStrip() {
   const items = [...capabilities, ...capabilities];
 
   return (
-    <section className="relative py-10 border-y border-border/40 bg-secondary/10 overflow-hidden">
+    <section className="relative py-10 border-y border-border/40 bg-muted overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 mb-4">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
           Tools, systems &amp; capabilities

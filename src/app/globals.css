@@ -4,10 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =====================================================================
-   ABIDEX — PROFESSION-INSPIRED THEME
-   Inspired by designesia.com/themes/profession/index-5.html
-   Charcoal background + vibrant red (#ff4242) accent + cyan (#63d5ef)
-   secondary, with Nunito typography.
+   ABIDEX — PROFESSIONAL WHITE & BLACK THEME
+   Clean white background, black typography, red (#ff4242) accent for
+   CTAs and highlights. Premium, minimalist, high-contrast.
    ===================================================================== */
 @theme inline {
   --color-background: var(--background);
@@ -52,53 +51,53 @@
 
 :root {
   --radius: 0.75rem;
-  /* Mirror the font variable so body { font-family: var(--font-sans) } works */
   --font-sans: var(--font-nunito, system-ui, sans-serif);
 
-  /* Charcoal background — from Profession #27282B / #202220 */
-  --background: oklch(0.18 0.004 280);
-  --foreground: oklch(0.93 0.005 280);
+  /* Clean white background */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0.005 280);
 
-  --card: oklch(0.21 0.005 280);
-  --card-foreground: oklch(0.93 0.005 280);
+  /* White cards with subtle warmth */
+  --card: oklch(0.995 0.001 280);
+  --card-foreground: oklch(0.12 0.005 280);
 
-  --popover: oklch(0.21 0.005 280);
-  --popover-foreground: oklch(0.93 0.005 280);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.005 280);
 
-  /* Vibrant red primary — Profession scheme-2 #ff4242 */
+  /* Vibrant red primary — Profession #ff4242 */
   --primary: oklch(0.65 0.22 25);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary-foreground: oklch(1 0 0);
 
-  /* Slightly elevated charcoal */
-  --secondary: oklch(0.25 0.006 280);
-  --secondary-foreground: oklch(0.92 0.005 280);
+  /* Light gray secondary — for subtle backgrounds */
+  --secondary: oklch(0.96 0.002 280);
+  --secondary-foreground: oklch(0.15 0.005 280);
 
-  --muted: oklch(0.23 0.005 280);
-  --muted-foreground: oklch(0.7 0.01 280);
+  --muted: oklch(0.97 0.002 280);
+  --muted-foreground: oklch(0.45 0.01 280);
 
-  /* Cyan accent — Profession #63d5ef */
-  --accent: oklch(0.79 0.13 220);
-  --accent-foreground: oklch(0.15 0.02 220);
+  /* Black accent for strong contrast elements */
+  --accent: oklch(0.15 0.005 280);
+  --accent-foreground: oklch(1 0 0);
 
   --destructive: oklch(0.65 0.22 25);
 
-  --border: oklch(0.3 0.008 280);
-  --input: oklch(0.27 0.006 280);
+  --border: oklch(0.9 0.003 280);
+  --input: oklch(0.94 0.002 280);
   --ring: oklch(0.65 0.22 25);
 
   --chart-1: oklch(0.65 0.22 25);
-  --chart-2: oklch(0.79 0.13 220);
-  --chart-3: oklch(0.6 0.18 35);
-  --chart-4: oklch(0.7 0.15 200);
-  --chart-5: oklch(0.55 0.12 280);
+  --chart-2: oklch(0.15 0.005 280);
+  --chart-3: oklch(0.55 0.18 35);
+  --chart-4: oklch(0.7 0.01 280);
+  --chart-5: oklch(0.45 0.01 280);
 
-  --sidebar: oklch(0.2 0.005 280);
-  --sidebar-foreground: oklch(0.93 0.005 280);
+  --sidebar: oklch(0.985 0.001 280);
+  --sidebar-foreground: oklch(0.12 0.005 280);
   --sidebar-primary: oklch(0.65 0.22 25);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.25 0.006 280);
-  --sidebar-accent-foreground: oklch(0.93 0.005 280);
-  --sidebar-border: oklch(0.3 0.008 280);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0.002 280);
+  --sidebar-accent-foreground: oklch(0.15 0.005 280);
+  --sidebar-border: oklch(0.9 0.003 280);
   --sidebar-ring: oklch(0.65 0.22 25);
 }
 
@@ -124,28 +123,28 @@ body {
 }
 
 /* ---------------------------------------------------------------------
-   ABIDEX UTILITIES
+   ABIDEX UTILITIES — adapted for white background
    --------------------------------------------------------------------- */
 
-/* Subtle grid background */
+/* Subtle grid background — light gray lines on white */
 .bg-grid {
   background-image:
-    linear-gradient(to right, oklch(0.3 0.008 280 / 0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.3 0.008 280 / 0.4) 1px, transparent 1px);
+    linear-gradient(to right, oklch(0.9 0.003 280 / 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.9 0.003 280 / 0.6) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
-/* Radial glow backgrounds — red and cyan */
+/* Radial glow backgrounds — soft red and soft dark */
 .bg-glow-red {
-  background: radial-gradient(circle at 50% 50%, oklch(0.65 0.22 25 / 0.18) 0, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, oklch(0.65 0.22 25 / 0.12) 0, transparent 60%);
 }
 .bg-glow-cyan {
-  background: radial-gradient(circle at 50% 50%, oklch(0.79 0.13 220 / 0.18) 0, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, oklch(0.15 0.005 280 / 0.06) 0, transparent 60%);
 }
 
-/* Gradient text — red → cyan, used on hero headline and key headings */
+/* Gradient text — black to red, used on hero headline */
 .text-gradient {
-  background: linear-gradient(135deg, oklch(0.93 0.005 280) 0%, oklch(0.65 0.22 25) 50%, oklch(0.79 0.13 220) 100%);
+  background: linear-gradient(135deg, oklch(0.12 0.005 280) 0%, oklch(0.65 0.22 25) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -159,19 +158,19 @@ body {
   color: transparent;
 }
 .text-gradient-cyan {
-  background: linear-gradient(135deg, oklch(0.79 0.13 220) 0%, oklch(0.65 0.15 200) 100%);
+  background: linear-gradient(135deg, oklch(0.15 0.005 280) 0%, oklch(0.35 0.01 280) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Glassmorphism card — used sparingly */
+/* Glassmorphism card — white with blur on light bg */
 .glass {
-  background: oklch(0.21 0.005 280 / 0.6);
+  background: oklch(1 0 0 / 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid oklch(0.35 0.01 280 / 0.5);
+  border: 1px solid oklch(0.9 0.003 280 / 0.8);
 }
 
 /* Soft glowing border on hover — red glow */
@@ -180,18 +179,18 @@ body {
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 .glow-border:hover {
-  border-color: oklch(0.65 0.22 25 / 0.6);
-  box-shadow: 0 0 0 1px oklch(0.65 0.22 25 / 0.4), 0 8px 40px -8px oklch(0.65 0.22 25 / 0.4);
+  border-color: oklch(0.65 0.22 25 / 0.5);
+  box-shadow: 0 0 0 1px oklch(0.65 0.22 25 / 0.2), 0 12px 40px -8px oklch(0.65 0.22 25 / 0.15), 0 4px 12px -2px oklch(0 0 0 / 0.05);
 }
 
 /* Custom scrollbar */
 .abidex-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
 .abidex-scroll::-webkit-scrollbar-track { background: transparent; }
 .abidex-scroll::-webkit-scrollbar-thumb {
-  background: oklch(0.35 0.01 280);
+  background: oklch(0.85 0.003 280);
   border-radius: 4px;
 }
-.abidex-scroll::-webkit-scrollbar-thumb:hover { background: oklch(0.45 0.02 280); }
+.abidex-scroll::-webkit-scrollbar-thumb:hover { background: oklch(0.7 0.01 280); }
 
 /* Hide scrollbar (horizontal marquees) */
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -267,8 +266,8 @@ body {
 
 /* Selection */
 ::selection {
-  background: oklch(0.65 0.22 25 / 0.4);
-  color: oklch(0.99 0 0);
+  background: oklch(0.65 0.22 25 / 0.25);
+  color: oklch(0.12 0.005 280);
 }
 
 html, body { min-height: 100%; }

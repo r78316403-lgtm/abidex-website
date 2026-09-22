@@ -15,7 +15,7 @@ export function Projects() {
   const [active, setActive] = useState<Project | null>(null);
 
   return (
-    <Section id="projects" className="bg-secondary/10">
+    <Section id="projects" className="bg-muted">
       <div className="text-center mb-12 md:mb-16">
         <Eyebrow>Featured Projects</Eyebrow>
         <Heading className="mx-auto">

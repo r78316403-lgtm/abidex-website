@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export function Services() {
   return (
-    <Section id="services" className="bg-secondary/10">
+    <Section id="services" className="bg-muted">
       <div className="text-center mb-12 md:mb-16">
         <Eyebrow>Services</Eyebrow>
         <Heading className="mx-auto">

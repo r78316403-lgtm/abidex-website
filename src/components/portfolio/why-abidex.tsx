@@ -9,7 +9,7 @@ import { benefits } from "@/lib/abidex-data";
 
 export function WhyAbidex() {
   return (
-    <Section id="why" className="bg-secondary/10">
+    <Section id="why" className="bg-muted">
       <div className="text-center mb-12 md:mb-16">
         <Eyebrow>Why Abidex</Eyebrow>
         <Heading className="mx-auto">

@@ -10,7 +10,7 @@ import { Sparkles } from "lucide-react";
 
 export function Testimonials() {
   return (
-    <Section id="focus" className="bg-secondary/10">
+    <Section id="focus" className="bg-muted">
       <div className="text-center mb-10">
         <Eyebrow>What I Focus On</Eyebrow>
         <Heading className="mx-auto">
