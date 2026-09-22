@@ -67,7 +67,7 @@ export function About() {
         {/* RIGHT — profile visual */}
         <div className="relative">
           {/* Glow behind */}
-          <div className="absolute -inset-4 bg-glow-blue rounded-3xl blur-2xl opacity-60" />
+          <div className="absolute -inset-4 bg-glow-red rounded-3xl blur-2xl opacity-60" />
 
           <div className="relative aspect-square rounded-3xl border border-border bg-card overflow-hidden">
             {/* Decorative grid */}

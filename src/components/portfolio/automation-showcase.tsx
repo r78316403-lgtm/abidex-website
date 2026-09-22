@@ -14,7 +14,7 @@ export function AutomationShowcase() {
   return (
     <Section id="automation">
       {/* Glow background */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] bg-glow-violet rounded-full -z-10" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] bg-glow-cyan rounded-full -z-10" />
 
       <div className="text-center mb-12 md:mb-16">
         <Eyebrow>AI Automation Showcase</Eyebrow>

@@ -179,7 +179,7 @@ export const projects: Project[] = [
     outcome:
       "Faster response times, reduced repetitive questions for staff, more reservations captured outside business hours, and a modern brand experience that differentiates the restaurant.",
     demo: true,
-    accent: "from-blue-500/20 to-violet-500/20",
+    accent: "from-red-500/20 to-rose-500/20",
   },
   {
     id: "real-estate-ai-leads",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     outcome:
       "Faster lead response times, automatic lead qualification, consistent follow-up, and more time for agents to focus on closing deals instead of chasing cold leads.",
     demo: true,
-    accent: "from-violet-500/20 to-cyan-500/20",
+    accent: "from-rose-500/20 to-cyan-500/20",
   },
   {
     id: "ecommerce-ai-experience",
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     outcome:
       "Higher conversion rates, larger average order values, reduced support tickets, and recovered abandoned-cart revenue through timely automated follow-ups.",
     demo: true,
-    accent: "from-cyan-500/20 to-blue-500/20",
+    accent: "from-cyan-500/20 to-sky-500/20",
   },
   {
     id: "gohighlevel-automation-system",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
     outcome:
       "One unified system replaces 5+ disconnected tools, faster lead response, more appointments booked, and a clean view of every lead's journey through the pipeline.",
     demo: true,
-    accent: "from-blue-500/20 to-emerald-500/20",
+    accent: "from-red-500/20 to-cyan-500/20",
   },
 ];
 

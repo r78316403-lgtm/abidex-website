@@ -20,7 +20,7 @@ export function Contact() {
   return (
     <Section id="contact" className="relative overflow-hidden">
       {/* Background glows */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] bg-glow-blue rounded-full -z-10" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] bg-glow-red rounded-full -z-10" />
       <div className="absolute inset-0 bg-grid opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] -z-10" />
 
       <div className="max-w-4xl mx-auto text-center">

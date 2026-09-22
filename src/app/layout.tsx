@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/lib/site-config";
 
-const inter = Inter({
-  variable: "--font-inter",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -61,14 +62,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0a0a14",
+  themeColor: "#27282b",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={nunito.variable}>
       <head>
         <script
           type="application/ld+json"
@@ -76,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen`}
+        className={`${nunito.variable} font-sans antialiased bg-background text-foreground min-h-screen`}
       >
         {children}
         <Toaster />

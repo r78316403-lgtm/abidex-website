@@ -26,8 +26,8 @@ export function Hero() {
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-grid opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] bg-glow-blue rounded-full -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 h-[400px] w-[400px] bg-glow-violet rounded-full -z-10" />
+      <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] bg-glow-red rounded-full -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 h-[400px] w-[400px] bg-glow-cyan rounded-full -z-10" />
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
@@ -155,8 +155,8 @@ function HeroVisual() {
       >
         <defs>
           <linearGradient id="line-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#ff4242" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#63d5ef" stopOpacity="0.2" />
           </linearGradient>
         </defs>
         {/* Lines from center to floating cards */}
@@ -171,14 +171,14 @@ function HeroVisual() {
         className="top-[8%] left-[5%] animate-float"
         icon={Workflow}
         label="Workflow"
-        accent="text-primary"
+        accent="text-[#ff4242]"
       />
       <FloatingCard
         className="top-[12%] right-[5%] animate-float"
         style={{ animationDelay: "0.6s" }}
         icon={Zap}
         label="Automation"
-        accent="text-violet-400"
+        accent="text-[#ff4242]"
       />
       <FloatingCard
         className="bottom-[15%] left-[5%] animate-float"
@@ -192,7 +192,7 @@ function HeroVisual() {
         style={{ animationDelay: "1.8s" }}
         icon={Sparkles}
         label="AI Agent"
-        accent="text-cyan-400"
+        accent="text-[#63d5ef]"
       />
 
       {/* Particle dots */}
