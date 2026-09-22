@@ -1,53 +1,45 @@
 // =====================================================================
-// APP ENTRY (/) — single externally-visible route
-// ---------------------------------------------------------------------
-// Renders the correct page based on the URL hash. All "pages" are
-// components imported lazily so code-splitting still works.
+// ABIDEX — PERSONAL PORTFOLIO (single-scroll landing page)
 // =====================================================================
 
-import { Suspense } from "react";
-import { AppShell } from "@/components/ecommerce/app-shell";
-import { HomePage } from "@/components/pages/home";
-import { ShopPage } from "@/components/pages/shop";
-import { ProductPage } from "@/components/pages/product";
-import { CategoryPage } from "@/components/pages/category";
-import { SearchResultsPage } from "@/components/pages/search";
-import { CartPage } from "@/components/pages/cart";
-import { CheckoutPage } from "@/components/pages/checkout";
-import { OrderConfirmationPage } from "@/components/pages/order-confirmation";
-import { WishlistPage } from "@/components/pages/wishlist";
-import { AccountPage } from "@/components/pages/account";
-import { OrderHistoryPage } from "@/components/pages/order-history";
-import { StaticPage } from "@/components/pages/static";
-import { NotFoundPage } from "@/components/pages/not-found";
-import { ContactPage } from "@/components/pages/contact";
+import { Navbar } from "@/components/portfolio/navbar";
+import { Hero } from "@/components/portfolio/hero";
+import { TrustStrip } from "@/components/portfolio/trust-strip";
+import { About } from "@/components/portfolio/about";
+import { Services } from "@/components/portfolio/services";
+import { AutomationShowcase } from "@/components/portfolio/automation-showcase";
+import { Projects } from "@/components/portfolio/projects";
+import { Process } from "@/components/portfolio/process";
+import { WhyAbidex } from "@/components/portfolio/why-abidex";
+import { TechStack } from "@/components/portfolio/tech-stack";
+import { Testimonials } from "@/components/portfolio/testimonials";
+import { Faq } from "@/components/portfolio/faq";
+import { Contact } from "@/components/portfolio/contact";
+import { Footer } from "@/components/portfolio/footer";
+import { FloatingContact } from "@/components/portfolio/floating-contact";
+import { AbidexChatbot } from "@/components/portfolio/chatbot";
 
 export default function Page() {
   return (
-    <AppShell
-      routes={{
-        "/": <HomePage />,
-        "/shop": <ShopPage />,
-        "/category": <CategoryPage />,
-        "/product": <ProductPage />,
-        "/search": <SearchResultsPage />,
-        "/cart": <CartPage />,
-        "/checkout": <CheckoutPage />,
-        "/order": <OrderConfirmationPage />,
-        "/wishlist": <WishlistPage />,
-        "/account": <AccountPage />,
-        "/orders": <OrderHistoryPage />,
-        "/contact": <ContactPage />,
-        "/about": <StaticPage slug="about" />,
-        "/distributor": <StaticPage slug="distributor" />,
-        "/five-year-plan": <StaticPage slug="five-year-plan" />,
-        "/faq": <StaticPage slug="faq" />,
-        "/shipping": <StaticPage slug="shipping" />,
-        "/returns": <StaticPage slug="returns" />,
-        "/privacy": <StaticPage slug="privacy" />,
-        "/terms": <StaticPage slug="terms" />,
-      }}
-      fallback={<NotFoundPage />}
-    />
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <TrustStrip />
+        <About />
+        <Services />
+        <AutomationShowcase />
+        <Projects />
+        <Process />
+        <WhyAbidex />
+        <TechStack />
+        <Testimonials />
+        <Faq />
+        <Contact />
+      </main>
+      <Footer />
+      <FloatingContact />
+      <AbidexChatbot />
+    </div>
   );
 }

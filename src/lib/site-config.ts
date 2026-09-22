@@ -1,127 +1,117 @@
 // =====================================================================
-// SITE CONFIG — KEDI HEALTHCARE
-// ---------------------------------------------------------------------
-// Single source of truth for business info, brand, currency, shipping,
-// and payment provider. Edit values here; they propagate everywhere.
+// ABIDEX — SITE CONFIG
+// AI & Automation Specialist personal portfolio
 // =====================================================================
 
 export const siteConfig = {
-  // --- Brand ---
-  name: "KEDI Healthcare",
-  legalName: "KEDI HEALTHCARE IND. NIG. LTD.",
-  tagline: "Open Up To A New Life With KEDI",
-  slogan: "KEDI Brings You Health, Wealth, and Happiness!",
+  name: "Abidex",
+  legalName: "Abidex",
+  tagline: "AI • AUTOMATION • DIGITAL SYSTEMS",
+  role: "AI & Automation Specialist",
   description:
-    "KEDI Healthcare is a leading health and wellness company committed to improving lives through quality herbal products, wellness solutions, and rewarding business opportunities that support healthier communities across Nigeria and beyond.",
-  url: "https://www.kedihealth.com",
-  founder: "Mr. William Zhao",
-  founderTitle: "Founder / Chairman",
+    "Abidex builds AI agents, business automation systems, CRM workflows, WhatsApp automation, websites, and AI-powered digital solutions for businesses.",
+  url: "https://abidex.ai", // ← replace with real domain when deployed
+  shortBio:
+    "Building smarter digital systems with AI, automation, and modern web experiences.",
 
-  // --- Contact (REAL DETAILS) ---
+  // --- Contact (real details) ---
   contact: {
-    email: "isiaqmusa123456abc@gmail.com",
-    phone: "+234 916 208 0741",
-    whatsapp: "2349162080741",                     // international format, no +
+    email: "ahmedabiola2025@gmail.com",
+    whatsapp: "2349162080741",                    // international format, no +
     whatsappDisplay: "+234 916 208 0741",
-    telegram: "ahmedabiola",                        // username without @
+    telegram: "ahmedabiola",
     telegramDisplay: "@ahmedabiola",
     telegramUrl: "https://t.me/ahmedabiola",
-    address: "KEDI Healthcare Ind. Nig. Ltd., Lagos, Nigeria",
-    hours: "Mon-Fri 9am to 5pm",
   },
 
-  // --- Social ---
+  // --- Social (same handles, surfaced as brand presence) ---
   social: {
-    facebook: "https://facebook.com/kedihealthcare",
-    instagram: "https://instagram.com/kedihealthcare",
-    twitter: "https://twitter.com/kedihealthcare",
-    youtube: "https://youtube.com/@kedihealthcare",
-    linkedin: "https://linkedin.com/company/kedi-healthcare",
-    telegram: "https://t.me/ahmedabiola",
     whatsapp: "https://wa.me/2349162080741",
+    telegram: "https://t.me/ahmedabiola",
+    email: "mailto:ahmedabiola2025@gmail.com",
   },
 
-  // --- Currency ---
-  currency: {
-    code: "NGN",
-    symbol: "₦",
-    position: "before" as "before" | "after",
-  },
-
-  // --- Shipping ---
-  shipping: {
-    freeThreshold: 50000,
-    standardRate: 2500,
-    expressRate: 5500,
-  },
-
-  // --- Payment ---
-  payment: {
-    provider: (process.env.PAYMENT_PROVIDER ?? "paystack") as
-      | "stripe"
-      | "paystack"
-      | "flutterwave"
-      | "cod",
-  },
-
-  // --- Google Sheets ---
-  googleSheets: {
-    enabled: Boolean(process.env.GOOGLE_SHEETS_SPREADSHEET_ID),
-  },
-
-  // --- Legal / Footer ---
-  legal: {
-    registrationYear: 2005,
-    legalName: "KEDI HEALTHCARE IND. NIG. LTD.",
-  },
-
-  // --- KEDI-specific programs ---
-  programs: {
-    fiveYearPlan: "2024 – 2028",
-    carAwardYear: "2026",
-  },
-
-  // --- SEO / Analytics ---
-  // Set these in .env to enable tracking
-  seo: {
-    googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION ?? "",
-    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "",
-    metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "",
-    gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "",
-  },
+  // --- Year ---
+  copyrightYear: 2026,
 } as const;
 
 export type SiteConfig = typeof siteConfig;
 
-// Helper to format currency consistently across the site.
-export function formatPrice(amount: number, opts?: { currency?: string }): string {
-  const cfg = siteConfig.currency;
-  const currency = opts?.currency ?? cfg.code;
-  const formatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-    minimumFractionDigits: 0,
-  });
-  return formatter.format(amount);
-}
+// --- Deep-link helpers ---
 
-// Pre-built WhatsApp deep link with prefilled message
 export function whatsappLink(message?: string): string {
   const base = `https://wa.me/${siteConfig.contact.whatsapp}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-// Pre-built Telegram deep link
 export function telegramLink(): string {
   return siteConfig.contact.telegramUrl;
 }
 
-// Pre-built mailto link
 export function emailLink(subject?: string, body?: string): string {
   const params = new URLSearchParams();
   if (subject) params.set("subject", subject);
   if (body) params.set("body", body);
   const qs = params.toString();
   return `mailto:${siteConfig.contact.email}${qs ? `?${qs}` : ""}`;
+}
+
+// Pre-built prefilled WhatsApp message used by hero & CTAs
+export const DEFAULT_WHATSAPP_MESSAGE =
+  "Hi Abidex, I found your portfolio website and I'd like to discuss a project.";
+
+export const DEFAULT_EMAIL_SUBJECT = "New Project Inquiry — Abidex";
+
+// Build a dynamic WhatsApp message for chatbot lead handoff
+export function buildLeadWhatsAppMessage(lead: {
+  name?: string;
+  business?: string;
+  email?: string;
+  whatsapp?: string;
+  service?: string;
+  project?: string;
+  budget?: string;
+  contactMethod?: string;
+}): string {
+  const lines = [
+    "Hi Abidex, I'd like to discuss a project.",
+    "",
+    `Name: ${lead.name || "-"}`,
+    `Business: ${lead.business || "-"}`,
+    `Service: ${lead.service || "-"}`,
+    `Project: ${lead.project || "-"}`,
+    `Email: ${lead.email || "-"}`,
+    `WhatsApp: ${lead.whatsapp || "-"}`,
+    `Budget: ${lead.budget || "-"}`,
+    `Preferred Contact: ${lead.contactMethod || "-"}`,
+  ];
+  return lines.join("\n");
+}
+
+export function buildLeadEmailBody(lead: {
+  name?: string;
+  business?: string;
+  email?: string;
+  whatsapp?: string;
+  service?: string;
+  project?: string;
+  budget?: string;
+  contactMethod?: string;
+}): string {
+  return [
+    "Hi Abidex,",
+    "",
+    "I'd like to discuss a project. Here are my details:",
+    "",
+    `Name: ${lead.name || "-"}`,
+    `Business: ${lead.business || "-"}`,
+    `Service needed: ${lead.service || "-"}`,
+    `Project description: ${lead.project || "-"}`,
+    `Email: ${lead.email || "-"}`,
+    `WhatsApp: ${lead.whatsapp || "-"}`,
+    `Budget range: ${lead.budget || "-"}`,
+    `Preferred contact method: ${lead.contactMethod || "-"}`,
+    "",
+    "Looking forward to your reply.",
+  ].join("\n");
 }
