@@ -1,45 +1,51 @@
 // =====================================================================
-// ABIDEX — PERSONAL PORTFOLIO (single-scroll landing page)
+// AS REFERENCE — BOOKING WEBSITE (single-scroll landing page)
 // =====================================================================
 
-import { Navbar } from "@/components/portfolio/navbar";
-import { Hero } from "@/components/portfolio/hero";
-import { TrustStrip } from "@/components/portfolio/trust-strip";
-import { About } from "@/components/portfolio/about";
-import { Services } from "@/components/portfolio/services";
-import { AutomationShowcase } from "@/components/portfolio/automation-showcase";
-import { Projects } from "@/components/portfolio/projects";
-import { Process } from "@/components/portfolio/process";
-import { WhyAbidex } from "@/components/portfolio/why-abidex";
-import { TechStack } from "@/components/portfolio/tech-stack";
-import { Testimonials } from "@/components/portfolio/testimonials";
-import { Faq } from "@/components/portfolio/faq";
-import { Contact } from "@/components/portfolio/contact";
-import { Footer } from "@/components/portfolio/footer";
-import { FloatingContact } from "@/components/portfolio/floating-contact";
-import { AbidexChatbot } from "@/components/portfolio/chatbot";
+import { Navbar } from "@/components/booking/navbar";
+import { Hero } from "@/components/booking/hero";
+import { TrustBenefits } from "@/components/booking/trust-benefits";
+import { Services } from "@/components/booking/services";
+import { HowItWorks } from "@/components/booking/how-it-works";
+import { Availability } from "@/components/booking/availability";
+import { About } from "@/components/booking/about";
+import { Testimonials } from "@/components/booking/testimonials";
+import { Faq } from "@/components/booking/faq";
+import { LeadGen } from "@/components/booking/lead-gen";
+import { Contact } from "@/components/booking/contact";
+import { FinalCta } from "@/components/booking/final-cta";
+import { Footer } from "@/components/booking/footer";
+import { FloatingContact } from "@/components/booking/floating-contact";
+import { ConciergeChatbot } from "@/components/booking/chatbot";
+import { BookingFlowModal } from "@/components/booking/booking-flow-modal";
+import { ServiceDetailModal } from "@/components/booking/service-detail-modal";
+import { BookingFlowProvider } from "@/components/booking/booking-context";
 
 export default function Page() {
   return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustStrip />
-        <About />
-        <Services />
-        <AutomationShowcase />
-        <Projects />
-        <Process />
-        <WhyAbidex />
-        <TechStack />
-        <Testimonials />
-        <Faq />
-        <Contact />
-      </main>
-      <Footer />
-      <FloatingContact />
-      <AbidexChatbot />
-    </div>
+    <BookingFlowProvider>
+      <div className="overflow-x-hidden">
+        <Navbar />
+        <main>
+          <Hero />
+          <TrustBenefits />
+          <Services />
+          <HowItWorks />
+          <Availability />
+          <About />
+          <Testimonials />
+          <Faq />
+          <LeadGen />
+          <Contact />
+          <FinalCta />
+        </main>
+        <Footer />
+        <FloatingContact />
+        <ConciergeChatbot />
+        {/* Global modals controlled by BookingFlowProvider */}
+        <BookingFlowModal />
+        <ServiceDetailModal />
+      </div>
+    </BookingFlowProvider>
   );
 }

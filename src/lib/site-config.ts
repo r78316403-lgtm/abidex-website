@@ -1,37 +1,39 @@
 // =====================================================================
-// ABIDEX — SITE CONFIG
-// AI & Automation Specialist personal portfolio
+// AS REFERENCE — SITE CONFIG
+// Premium booking platform — warm hospitality aesthetic
 // =====================================================================
 
 export const siteConfig = {
-  name: "Abidex",
-  legalName: "Abidex",
-  tagline: "AI • AUTOMATION • DIGITAL SYSTEMS",
-  role: "AI & Automation Specialist",
+  name: "As Reference",
+  legalName: "As Reference",
+  tagline: "Book Your Experience. Your Way.",
   description:
-    "Abidex builds AI agents, business automation systems, CRM workflows, WhatsApp automation, websites, and AI-powered digital solutions for businesses.",
-  url: "https://abidex.ai", // ← replace with real domain when deployed
+    "Book your appointment or service with As Reference. Explore available services, choose a convenient time, and connect with our team.",
+  url: "https://asreference.com", // ← replace with real domain when deployed
   shortBio:
-    "Building smarter digital systems with AI, automation, and modern web experiences.",
+    "Making it easier to discover, schedule, and enjoy exceptional experiences.",
 
   // --- Contact (real details) ---
   contact: {
-    email: "ahmedabiola2025@gmail.com",
-    whatsapp: "2349162080741",                    // international format, no +
-    whatsappDisplay: "+234 916 208 0741",
+    email: "profabiolabukclub@gmail.com",
+    whatsapp: "2347037568457",                    // international format, no +
+    whatsappDisplay: "+234 703 756 8457",
     telegram: "ahmedabiola",
     telegramDisplay: "@ahmedabiola",
     telegramUrl: "https://t.me/ahmedabiola",
   },
 
-  // --- Social (same handles, surfaced as brand presence) ---
+  // --- Social ---
   social: {
-    whatsapp: "https://wa.me/2349162080741",
+    instagram: "https://instagram.com/asreference",
+    facebook: "https://facebook.com/asreference",
+    tiktok: "https://tiktok.com/@asreference",
+    linkedin: "https://linkedin.com/company/asreference",
+    whatsapp: "https://wa.me/2347037568457",
     telegram: "https://t.me/ahmedabiola",
-    email: "mailto:ahmedabiola2025@gmail.com",
+    email: "mailto:profabiolabukclub@gmail.com",
   },
 
-  // --- Year ---
   copyrightYear: 2026,
 } as const;
 
@@ -58,60 +60,67 @@ export function emailLink(subject?: string, body?: string): string {
 
 // Pre-built prefilled WhatsApp message used by hero & CTAs
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hi Abidex, I found your portfolio website and I'd like to discuss a project.";
+  "Hello As Reference, I found your website and I'd like to make an inquiry/book an appointment.";
 
-export const DEFAULT_EMAIL_SUBJECT = "New Project Inquiry — Abidex";
+export const DEFAULT_EMAIL_SUBJECT = "New Booking Inquiry — As Reference";
 
-// Build a dynamic WhatsApp message for chatbot lead handoff
-export function buildLeadWhatsAppMessage(lead: {
+// Build a dynamic WhatsApp message for chatbot/booking lead handoff
+export function buildBookingWhatsAppMessage(lead: {
   name?: string;
-  business?: string;
   email?: string;
-  whatsapp?: string;
+  phone?: string;
   service?: string;
-  project?: string;
-  budget?: string;
-  contactMethod?: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  message?: string;
 }): string {
   const lines = [
-    "Hi Abidex, I'd like to discuss a project.",
+    "Hello As Reference, I'd like to make a booking.",
     "",
     `Name: ${lead.name || "-"}`,
-    `Business: ${lead.business || "-"}`,
     `Service: ${lead.service || "-"}`,
-    `Project: ${lead.project || "-"}`,
+    `Preferred Date: ${lead.preferredDate || "-"}`,
+    `Preferred Time: ${lead.preferredTime || "-"}`,
     `Email: ${lead.email || "-"}`,
-    `WhatsApp: ${lead.whatsapp || "-"}`,
-    `Budget: ${lead.budget || "-"}`,
-    `Preferred Contact: ${lead.contactMethod || "-"}`,
+    `Phone: ${lead.phone || "-"}`,
+    "",
+    "Additional Message:",
+    lead.message || "-",
   ];
   return lines.join("\n");
 }
 
-export function buildLeadEmailBody(lead: {
+export function buildBookingEmailBody(lead: {
   name?: string;
-  business?: string;
   email?: string;
-  whatsapp?: string;
+  phone?: string;
   service?: string;
-  project?: string;
-  budget?: string;
-  contactMethod?: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  message?: string;
 }): string {
   return [
-    "Hi Abidex,",
+    "Hello As Reference,",
     "",
-    "I'd like to discuss a project. Here are my details:",
+    "I'd like to make a booking. Here are my details:",
     "",
     `Name: ${lead.name || "-"}`,
-    `Business: ${lead.business || "-"}`,
-    `Service needed: ${lead.service || "-"}`,
-    `Project description: ${lead.project || "-"}`,
+    `Service: ${lead.service || "-"}`,
+    `Preferred Date: ${lead.preferredDate || "-"}`,
+    `Preferred Time: ${lead.preferredTime || "-"}`,
     `Email: ${lead.email || "-"}`,
-    `WhatsApp: ${lead.whatsapp || "-"}`,
-    `Budget range: ${lead.budget || "-"}`,
-    `Preferred contact method: ${lead.contactMethod || "-"}`,
+    `Phone: ${lead.phone || "-"}`,
+    "",
+    "Additional Message:",
+    lead.message || "-",
     "",
     "Looking forward to your reply.",
   ].join("\n");
+}
+
+// Generate a booking reference number
+export function generateBookingReference(): string {
+  const ts = Date.now().toString(36).toUpperCase().slice(-5);
+  const rand = Math.random().toString(36).toUpperCase().slice(2, 5);
+  return `AR-${ts}-${rand}`;
 }
