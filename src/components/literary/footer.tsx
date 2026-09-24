@@ -5,12 +5,11 @@
 // =====================================================================
 
 import {
-  siteConfig, whatsappLink, emailLink,
-  DEFAULT_WHATSAPP_MESSAGE, DEFAULT_EMAIL_SUBJECT,
+  siteConfig, emailLink, DEFAULT_EMAIL_SUBJECT,
 } from "@/lib/site-config";
 import { AbidexWordmark } from "./logo";
 import { navLinks } from "@/lib/literary-data";
-import { MessageCircle, Send, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function Footer() {
   const scrollTo = (href: string) => {
@@ -60,26 +59,6 @@ export function Footer() {
               Connect With Us
             </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-foreground/80 hover:text-emerald-700 transition-colors"
-                >
-                  <MessageCircle className="h-4 w-4 shrink-0" />
-                  <span>WhatsApp · {siteConfig.contact.whatsappDisplay}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.contact.telegramUrl}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-foreground/80 hover:text-sky-700 transition-colors"
-                >
-                  <Send className="h-4 w-4 shrink-0" />
-                  <span>Telegram · {siteConfig.contact.telegramDisplay}</span>
-                </a>
-              </li>
               <li>
                 <a
                   href={emailLink(DEFAULT_EMAIL_SUBJECT)}

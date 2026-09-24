@@ -1,15 +1,14 @@
 "use client";
 
 // =====================================================================
-// FLOATING CONTACT — WhatsApp / Telegram / Email
+// FLOATING CONTACT — Email only
 // =====================================================================
 
 import { useState, useSyncExternalStore } from "react";
 import {
-  whatsappLink, telegramLink, emailLink,
-  DEFAULT_WHATSAPP_MESSAGE, DEFAULT_EMAIL_SUBJECT,
+  emailLink, DEFAULT_EMAIL_SUBJECT,
 } from "@/lib/site-config";
-import { MessageCircle, Send, Mail, Plus, X } from "lucide-react";
+import { Mail, Plus, X } from "lucide-react";
 
 const emptySubscribe = () => () => {};
 const getServer = () => false;
@@ -24,20 +23,6 @@ export function FloatingContact() {
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
       {open && (
         <div className="flex flex-col gap-2 animate-scale-in origin-bottom-right">
-          <Action
-            label="WhatsApp"
-            color="bg-emerald-600 text-white"
-            icon={MessageCircle}
-            href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
-            external
-          />
-          <Action
-            label="Telegram"
-            color="bg-sky-600 text-white"
-            icon={Send}
-            href={telegramLink()}
-            external
-          />
           <Action
             label="Email"
             color="bg-primary text-primary-foreground"
@@ -63,19 +48,16 @@ export function FloatingContact() {
 }
 
 function Action({
-  label, color, icon: Icon, href, external,
+  label, color, icon: Icon, href,
 }: {
   label: string;
   color: string;
   icon: any;
   href: string;
-  external?: boolean;
 }) {
   return (
     <a
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
       className="flex items-center gap-3 pl-1.5 pr-3 py-1.5 rounded-full glass shadow-xl hover:scale-105 transition-transform"
       style={{ background: "var(--card)" }}
     >

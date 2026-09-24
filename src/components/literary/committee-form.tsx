@@ -13,9 +13,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import {
-  siteConfig, whatsappLink, emailLink, DEFAULT_WHATSAPP_MESSAGE, DEFAULT_EMAIL_SUBJECT,
+  siteConfig, emailLink, DEFAULT_EMAIL_SUBJECT,
 } from "@/lib/site-config";
-import { MessageCircle, Send, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function CommitteeForm() {
@@ -155,38 +155,6 @@ export function CommitteeForm() {
         {/* Contact options */}
         <div className="space-y-3">
           <h3 className="font-serif text-xl font-semibold mb-4">Prefer to reach us directly?</h3>
-
-          <a
-            href={whatsappLink(DEFAULT_WHATSAPP_MESSAGE)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card warm-card group"
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 border border-emerald-200 shrink-0">
-              <MessageCircle className="h-5 w-5 text-emerald-700" />
-            </span>
-            <div className="flex-1">
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">WhatsApp</p>
-              <p className="text-sm font-semibold">{siteConfig.contact.whatsappDisplay}</p>
-            </div>
-            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-          </a>
-
-          <a
-            href={siteConfig.contact.telegramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card warm-card group"
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-50 border border-sky-200 shrink-0">
-              <Send className="h-5 w-5 text-sky-700" />
-            </span>
-            <div className="flex-1">
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Telegram</p>
-              <p className="text-sm font-semibold">{siteConfig.contact.telegramDisplay}</p>
-            </div>
-            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-          </a>
 
           <a
             href={emailLink(DEFAULT_EMAIL_SUBJECT)}
