@@ -3,6 +3,8 @@
 // In-memory store for demo. Swap to Prisma + DB for production.
 // =====================================================================
 
+export const runtime = 'edge';
+
 import { NextResponse } from "next/server";
 
 type Submission = {
