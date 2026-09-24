@@ -32,7 +32,7 @@ export const siteConfig = {
     email: "mailto:profabiolabukclub@gmail.com",
   },
 
-  copyrightYear: 2026,
+  copyrightYear: 2001,
 } as const;
 
 export type SiteConfig = typeof siteConfig;
