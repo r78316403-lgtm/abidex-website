@@ -95,7 +95,18 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {siteConfig.copyrightYear} {siteConfig.name}. All Rights Reserved.</p>
+          <p>
+            © {siteConfig.copyrightYear} {siteConfig.name}. All Rights Reserved. ·{" "}
+            Designed By{" "}
+            <a
+              href="https://bestbenydigitalbrand.space-z.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Bestbeny Digital Brand
+            </a>
+          </p>
           <p className="italic">{siteConfig.tagline}.</p>
         </div>
       </div>
