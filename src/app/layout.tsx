@@ -14,57 +14,44 @@ const inter = Inter({
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": "Organization",
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.url,
   email: siteConfig.contact.email,
-  telephone: siteConfig.contact.whatsappDisplay,
-  areaServed: "NG",
-  availableChannel: {
-    "@type": "OnlineChannel",
-    url: siteConfig.url,
-    serviceUrl: `${siteConfig.url}/#book`,
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "reservations",
-    email: siteConfig.contact.email,
-    telephone: siteConfig.contact.whatsappDisplay,
-    availableLanguage: ["English"],
-  },
+  foundingDate: String(siteConfig.established),
+  knowsAbout: ["Literary Society", "Independent Authors", "Reader Experience", "Cultural Curation"],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "As Reference | Book Your Appointment Online",
-  description:
-    "Book your appointment or service with As Reference. Explore available services, choose a convenient time, and connect with our team.",
+  title: "Abidex | Private Literary Society & Managed Reader Experience",
+  description: siteConfig.description,
   keywords: [
-    "As Reference", "book appointment", "online booking", "schedule appointment",
-    "reservation", "booking platform", "appointment booking Nigeria",
-    "professional services booking", "easy scheduling",
+    "Abidex", "literary society", "independent authors", "reader experience",
+    "book reviews", "managed reader experience", "private literary club",
+    "selection committee", "cultural curation", "literary residency",
   ],
-  authors: [{ name: "As Reference" }],
-  creator: "As Reference",
-  applicationName: "As Reference",
+  authors: [{ name: "Abidex" }],
+  creator: "Abidex",
+  applicationName: "Abidex",
   openGraph: {
-    title: "As Reference | Book Your Appointment Online",
+    title: "Abidex | Private Literary Society & Managed Reader Experience",
     description: siteConfig.description,
     url: siteConfig.url,
-    siteName: "As Reference",
+    siteName: "Abidex",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "As Reference | Book Your Appointment Online",
+    title: "Abidex | Private Literary Society",
     description: siteConfig.description,
   },
   robots: {

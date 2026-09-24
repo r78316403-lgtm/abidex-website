@@ -1,51 +1,35 @@
 // =====================================================================
-// AS REFERENCE — BOOKING WEBSITE (single-scroll landing page)
+// ABIDEX — PRIVATE LITERARY SOCIETY (single-scroll landing page)
 // =====================================================================
 
-import { Navbar } from "@/components/booking/navbar";
-import { Hero } from "@/components/booking/hero";
-import { TrustBenefits } from "@/components/booking/trust-benefits";
-import { Services } from "@/components/booking/services";
-import { HowItWorks } from "@/components/booking/how-it-works";
-import { Availability } from "@/components/booking/availability";
-import { About } from "@/components/booking/about";
-import { Testimonials } from "@/components/booking/testimonials";
-import { Faq } from "@/components/booking/faq";
-import { LeadGen } from "@/components/booking/lead-gen";
-import { Contact } from "@/components/booking/contact";
-import { FinalCta } from "@/components/booking/final-cta";
-import { Footer } from "@/components/booking/footer";
-import { FloatingContact } from "@/components/booking/floating-contact";
-import { ConciergeChatbot } from "@/components/booking/chatbot";
-import { BookingFlowModal } from "@/components/booking/booking-flow-modal";
-import { ServiceDetailModal } from "@/components/booking/service-detail-modal";
-import { BookingFlowProvider } from "@/components/booking/booking-context";
+import { Navbar } from "@/components/literary/navbar";
+import { Hero } from "@/components/literary/hero";
+import { Philosophy } from "@/components/literary/philosophy";
+import { Residency } from "@/components/literary/residency";
+import { ReviewVelocity } from "@/components/literary/review-velocity";
+import { Curators } from "@/components/literary/curators";
+import { OperatingPrinciple } from "@/components/literary/operating-principle";
+import { Voices } from "@/components/literary/voices";
+import { CommitteeForm } from "@/components/literary/committee-form";
+import { Footer } from "@/components/literary/footer";
+import { FloatingContact } from "@/components/literary/floating-contact";
 
 export default function Page() {
   return (
-    <BookingFlowProvider>
-      <div className="overflow-x-hidden">
-        <Navbar />
-        <main>
-          <Hero />
-          <TrustBenefits />
-          <Services />
-          <HowItWorks />
-          <Availability />
-          <About />
-          <Testimonials />
-          <Faq />
-          <LeadGen />
-          <Contact />
-          <FinalCta />
-        </main>
-        <Footer />
-        <FloatingContact />
-        <ConciergeChatbot />
-        {/* Global modals controlled by BookingFlowProvider */}
-        <BookingFlowModal />
-        <ServiceDetailModal />
-      </div>
-    </BookingFlowProvider>
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <Philosophy />
+        <Residency />
+        <ReviewVelocity />
+        <Curators />
+        <OperatingPrinciple />
+        <Voices />
+        <CommitteeForm />
+      </main>
+      <Footer />
+      <FloatingContact />
+    </div>
   );
 }
